@@ -51,11 +51,11 @@ def play_map(match_time, hit_objects):
             mouse.click(Button.left, 2)
             previous_time = hit_time
             print(f"{OSU_OBJECT_NAMES[hit_type]} Resolved")
-        elif(hit_type == LOCAL_FLAG_SLIDER)
+        elif(hit_type == LOCAL_FLAG_SLIDER):
             print(f"{OSU_OBJECT_NAMES[hit_type]} NOT IMPLEMENTED")
-        elif(hit_type == LOCAL_FLAG_SPINNER)
+        elif(hit_type == LOCAL_FLAG_SPINNER):
             print(f"{OSU_OBJECT_NAMES[hit_type]} NOT IMPLEMENTED")
-        else
+        else:
             print(f"Unknown type: {OSU_OBJECT_NAMES[hit_type]}")
 #-----------------------
 def monitor_screen_with_raw_template(template_path, region=None, template_size=(60, 60), threshold=0.91):
