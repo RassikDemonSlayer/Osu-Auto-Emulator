@@ -1,6 +1,7 @@
 import re
 import pyautogui
 from funcs import osu_to_screen
+import defines
 
 #========================= Настройки и переменные ====================================================================
 screen_width, screen_height = pyautogui.size() #Разрешение экрана
@@ -65,7 +66,14 @@ for line in hit_objects_section.split("\n"):
         x = int(parts[0])
         y = int(parts[1])
         hit_time = int(parts[2])
-        hit_objects.append([x, y, hit_time])
+        flags = int(parts[3])
+        hit_type = -1
+        index = 0
+        for i in OSU_OBJECT_FLAGS:
+            if((flags & i) == i and i != OSU_FLAG_NEW_COMBO):
+                hit_type = LOCAL_TYPE_FLAGS[index]
+            index += 1
+        hit_objects.append([x, y, hit_time, hit_type])
 for hit_obj in hit_objects: 
     hit_obj[2] /= 1000
 
@@ -74,9 +82,9 @@ def prepare_hit_objects(hit_objects):
     """Подготовка данных: конвертация osu-координат в экранные."""
     prepared_objects = []
     for hit_obj in hit_objects:
-        x, y, time = hit_obj
+        x, y, time, hit_type = hit_obj
         screen_x, screen_y = osu_to_screen(x, y)  # Конвертируем координаты
-        prepared_objects.append((screen_x, screen_y, time))
+        prepared_objects.append((screen_x, screen_y, time, hit_type))
     return prepared_objects
 
 hit_objects = prepare_hit_objects(hit_objects)

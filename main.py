@@ -2,6 +2,7 @@ from time import sleep
 import subprocess
 import pyperclip
 import pyautogui
+import defines
 
 from set_up import osu_path, map_name_correct, screen_width_center, screen_height_center, hit_objects, template
 from funcs import press_ctrl_v, press_enter, monitor_screen_with_raw_template, play_map

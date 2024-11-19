@@ -6,6 +6,7 @@ from datetime import datetime
 from mss import mss
 import pyautogui
 from pynput.mouse import Controller, Button
+import defines
 VK_CONTROL = 0x11  # Код клавиши Ctrl
 VK_V = 0x56        # Код клавиши V
 
@@ -42,12 +43,20 @@ def play_map(match_time, hit_objects):
     mouse = Controller()
     previous_time = hit_objects[0][2]
     sleep(0.011)
-    for x, y, hit_time in hit_objects:
+    for x, y, hit_time, hit_type in hit_objects:
         delay = hit_time - previous_time
-        sleep(delay)    
-        mouse.position = (x, y)
-        mouse.click(Button.left, 2)
-        previous_time = hit_time
+        sleep(delay)
+        if(hit_type == LOCAL_FLAG_DOT):    
+            mouse.position = (x, y)
+            mouse.click(Button.left, 2)
+            previous_time = hit_time
+            print(f"{OSU_OBJECT_NAMES[hit_type]} Resolved")
+        elif(hit_type == LOCAL_FLAG_SLIDER)
+            print(f"{OSU_OBJECT_NAMES[hit_type]} NOT IMPLEMENTED")
+        elif(hit_type == LOCAL_FLAG_SPINNER)
+            print(f"{OSU_OBJECT_NAMES[hit_type]} NOT IMPLEMENTED")
+        else
+            print(f"Unknown type: {OSU_OBJECT_NAMES[hit_type]}")
 #-----------------------
 def monitor_screen_with_raw_template(template_path, region=None, template_size=(60, 60), threshold=0.91):
     """Мониторит экрана или области экрана на наличие сырого шаблона.
