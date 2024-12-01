@@ -1,3 +1,0 @@
-osu_path: C:\Users\rassi\AppData\Local\osu!\osu!.exe
-map_path: C:\Users\rassi\AppData\Local\osu!\Songs\beatmap-638545161875952660-ICEGERGERT - Как въебать барыгу
-map_name: Icegergert - Baryga (Rassik) [Insane].osu
